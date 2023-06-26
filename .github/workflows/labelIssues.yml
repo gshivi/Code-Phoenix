@@ -5,17 +5,18 @@ name: Label issues
       - reopened
       - opened
 jobs:
-  label_issues:
+  label-issues:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-      - uses: actions/github-script@v6
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
         with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ["triage"]
-            })
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Label Issues
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        run: node label-issues.js
