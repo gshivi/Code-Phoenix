@@ -18,29 +18,37 @@ async function main() {
   
   const label = ['label1', 'label2', 'label3'] ;
 
-  // Add the label to the issue
-//   await octokit.issues.update({
-//     owner: process.env.GITHUB_REPOSITORY_OWNER,
-//     repo: process.env.GITHUB_REPOSITORY_NAME,
-//     issue_number: process.env.GITHUB_ISSUE_NUMBER,
-//     labels: label,
-//   });
-// }
+  //Add the label to the issue
+  // await octokit.issue.update({
+  //   owner: process.env.GITHUB_REPOSITORY_OWNER,
+  //   repo: process.env.GITHUB_REPOSITORY_NAME,
+  //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
+  //   labels: label,
+  // });
 
-await octokit.request('POST /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels', {
-  owner: 'process.env.GITHUB_REPOSITORY_OWNER',
-  repo: 'process.env.GITHUB_REPOSITORY_NAME',
-  issue_number: 'process.env.GITHUB_ISSUE_NUMBER',
-  labels: [
-    'bug',
-    'enhancement'
-  ],
-  headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-})
+  //   await octokit.issues.addLabels({
+  //     owner: 'gshivi',
+  //     repo: 'Code-Phoenix',
+  //     issue_number: process.env.GITHUB_ISSUE_NUMBER,
+  //     labels: label,
+  //   });
+  // }
 
-main().catch((error) => {
-  console.error('Error:', error);
-  process.exit(1);
-});
+  await octokit.request('POST /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels', {
+    owner: 'process.env.GITHUB_REPOSITORY_OWNER',
+    repo: 'process.env.GITHUB_REPOSITORY_NAME',
+    issue_number: 'process.env.GITHUB_ISSUE_NUMBER',
+    labels: [
+      'bug',
+      'enhancement'
+    ],
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
+  
+  main().catch((error) => {
+    console.error('Error:', error);
+    process.exit(1);
+  });
+}
