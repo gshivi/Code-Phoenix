@@ -35,5 +35,6 @@ jobs:
           npm install @octokit/rest
           npm install axios
           npm install emailjs
+          npm install nodemailer
           node label-issues.js
 
