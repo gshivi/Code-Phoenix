@@ -37,17 +37,26 @@ async function main() {
     },
     data : data
   };
-  let label = '';
+ // let label = '';
   axios.request(config)
   .then((response) => {
-    console.log(JSON.stringify(response.data));
+    //console.log(JSON.stringify(response.data));
     const gptResponse = response.data.choices[0].text;
     const labelIndex = gptResponse.indexOf('label: ');
     const labelValueStartIndex = labelIndex + 7;
     const labelValueEndIndex = gptResponse.indexOf('}', labelValueStartIndex);
     const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
-    console.log(labelValue);
-    console.log([labelValue])
+
+    // Add the label to the issue
+    const response = octokit.issues.addLabels({
+    owner: process.env.GITHUB_REPOSITORY_OWNER,
+    repo: process.env.GITHUB_REPOSITORY_NAME,
+    issue_number: process.env.GITHUB_ISSUE_NUMBER,
+    labels: [labelValue],
+  });  
+
+    // console.log(labelValue);
+    // console.log([labelValue])
     // console.log("GPTResponse" + gptResponse);
     // const gptstring = JSON.stringify(gptResponse);
     // console.log(gptstring);
@@ -72,13 +81,7 @@ async function main() {
   
   //const label = ['label1', 'label2', 'label3'] ;
 
-  //Add the label to the issue
-  //   const response = await octokit.issues.addLabels({
-  //   owner: process.env.GITHUB_REPOSITORY_OWNER,
-  //   repo: process.env.GITHUB_REPOSITORY_NAME,
-  //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
-  //   labels: [label],
-  // });  
+  
 }
 
 main().catch((error) => {
