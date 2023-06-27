@@ -37,7 +37,7 @@ async function main() {
     },
     data : data
   };
-
+  let label = '';
   axios.request(config)
   .then((response) => {
     console.log(JSON.stringify(response.data));
@@ -47,6 +47,7 @@ async function main() {
     console.log(response.data.choices[0]);
     console.log("Choices text");
     console.log(response.data.choices[0].text);
+    label = response.data.choices[0].text.label;
     // jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
     // const updatedJsonString = JSON.stringify(jsonObject);
 
@@ -59,8 +60,9 @@ async function main() {
     console.log(error);
   });
   
-  const label = ['label1', 'label2', 'label3'] ;
-
+  //const label = ['label1', 'label2', 'label3'] ;
+  console.log("Label");
+  console.log(label);
   //Add the label to the issue
     const response = await octokit.issues.addLabels({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
