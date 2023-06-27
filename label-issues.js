@@ -45,7 +45,7 @@ async function main() {
     const labelIndex = gptResponse.indexOf('label: ');
     const labelValueStartIndex = labelIndex + 7;
     const labelValueEndIndex = string.indexOf('}', labelValueStartIndex);
-    const labelValue = string.substring(labelValueStartIndex, labelValueEndIndex).trim();
+    const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
     console.log(labelValue);
     console.log([labelValue])
     // console.log("GPTResponse" + gptResponse);
