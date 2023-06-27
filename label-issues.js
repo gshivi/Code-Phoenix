@@ -10,7 +10,7 @@ async function main() {
   // Fetch the issue information
   const issue = await octokit.issues.get({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
-    repo: process.env.GITHUB_REPOSITORY,
+    repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER
   });
   
@@ -19,7 +19,7 @@ async function main() {
   // Add the label to the issue
   await octokit.issues.addLabels({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
-    repo: process.env.GITHUB_REPOSITORY,
+    repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
     labels: label,
   });
