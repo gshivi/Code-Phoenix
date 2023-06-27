@@ -26,7 +26,7 @@ async function main() {
       owner: 'gshivi',
       repo: 'Code-Phoenix',
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
-      labels: ['label1'],
+      labels: label,
     });
   
 // const response = await octokit.request(
