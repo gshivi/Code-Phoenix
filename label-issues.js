@@ -41,7 +41,10 @@ async function main() {
   axios.request(config)
   .then((response) => {
     console.log(JSON.stringify(response.data));
-
+    const gptResponse = response.data.choices[0].text;
+    console.log("GPTResponse" + gptResponse);
+    const gptstring = JSON.stringify(gptResponse);
+    console.log(gptstring);
     //const jsonObject = JSON.parse(response.data);
     console.log("Choices");
     console.log(response.data.choices[0]);
@@ -55,10 +58,10 @@ async function main() {
     // jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
     // const updatedJsonString = JSON.stringify(jsonObject);
 
-    // const labelIndex = string.indexOf('label: ');
-    // const labelValueStartIndex = labelIndex + 7;
-    // const labelValueEndIndex = string.indexOf('}', labelValueStartIndex);
-    // const labelValue = string.substring(labelValueStartIndex, labelValueEndIndex).trim();
+    const labelIndex = string.indexOf('label: ');
+    const labelValueStartIndex = labelIndex + 7;
+    const labelValueEndIndex = string.indexOf('}', labelValueStartIndex);
+    const labelValue = string.substring(labelValueStartIndex, labelValueEndIndex).trim();
   })
   .catch((error) => {
     console.log(error);
