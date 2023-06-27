@@ -17,11 +17,11 @@ async function main() {
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = new Map();
-  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
-  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
-  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
-  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
-  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
 
   const categoryArray = [...categoryMap.keys()];
   console.log(categoryArray);
@@ -127,12 +127,12 @@ async function main() {
     </head>
     <body>
       <h2>GitHub Issue Assigned</h2>
-      <p>Dear [User],</p>
+      <p>Dear ${categoryRecord.owner},</p>
       
       <p>An issue has been assigned to you on GitHub:</p>
       
-      <h3>[Issue Title]</h3>
-      <p>[Issue Description]</p>
+      <h3>${issueTitle}</h3>
+      <p>${issueBody}</p>
       
       <p>Please take appropriate action and provide necessary updates as needed.</p>
       
