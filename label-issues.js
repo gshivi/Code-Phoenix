@@ -3,7 +3,7 @@ const core = require('@actions/core');
 
 async function main() {
   console.log("hello1");
-  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
   
   console.log(process.env);
   console.log("hello2");
