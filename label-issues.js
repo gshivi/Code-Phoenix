@@ -44,7 +44,7 @@ axios.request(config)
   console.log(JSON.stringify(response.data));
 
 const jsonObject = JSON.parse(response.data);
-console.log(jsonObject);
+console.log(jsonObject.choices[0].text);
 // jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
 // const updatedJsonString = JSON.stringify(jsonObject);
 
