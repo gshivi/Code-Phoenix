@@ -16,7 +16,7 @@ async function main() {
   const issueBody = issue.data.body;
 
 let data = JSON.stringify({
-  "prompt": "Classify the following news headline into 1 of the following categories: Business, Tech, Politics, Sport, Entertainment\n\nHeadline 1: Donna Steffensen Is Cooking Up a New Kind of Perfection. The Internet's most beloved cooking guru has a buzzy new book and a fresh new perspective\nCategory: Entertainment\n\nHeadline 2: Major Retailer Announces Plans to Close Over 100 Stores\nCategory:",
+  "prompt": `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title.Issue title:${issueTitle} Return a label in the JSON format {label: labelName} refer to the following examples to determine the response format\nif the label is paportal return {label: paportal}\nif the label is pcf return {label: pcf}\nif the label is canvasApps return {label: canvasApps}`,
   "temperature": 0,
   "top_p": 1,
   "frequency_penalty": 0,
