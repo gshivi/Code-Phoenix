@@ -19,4 +19,7 @@ jobs:
       - name: Label Issues
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-        run: node label-issues.js
+        run: |
+          npm install @octokit/rest
+          node label-issues.js
+
