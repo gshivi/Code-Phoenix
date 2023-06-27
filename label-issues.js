@@ -68,7 +68,7 @@ async function main() {
     owner: process.env.GITHUB_REPOSITORY_OWNER,
     repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
-    labels: label,
+    labels: [label],
   });  
 }
 
