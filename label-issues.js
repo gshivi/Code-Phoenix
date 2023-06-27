@@ -32,7 +32,7 @@ let config = {
   url: 'https://nikhilhackathonjune.openai.azure.com/openai/deployments/NikhilDavinci003/completions?api-version=2022-12-01',
   headers: { 
     'Content-Type': 'application/json', 
-    'api-key': '75d09d96a7324669a179ff4a549ddd3c'
+    'api-key': process.env.API_KEY
   },
   data : data
 };
@@ -49,8 +49,8 @@ const label = ['label1', 'label2', 'label3'] ;
 
 //Add the label to the issue
       const response = await octokit.issues.addLabels({
-      owner: 'gshivi',
-      repo: 'Code-Phoenix',
+      owner: process.env.GITHUB_REPOSITORY_OWNER,
+      repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: label,
     });  
