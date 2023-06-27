@@ -2,10 +2,11 @@ const { Octokit } = require('@octokit/rest');
 const core = require('@actions/core');
 
 async function main() {
+  console.log("hello1");
   const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
   
-  core.info(process.env);
-  core.info("hello");
+  console.log(process.env);
+  console.log("hello2");
   
   // Fetch the issue information
   const issue = await octokit.issues.get({
@@ -14,18 +15,12 @@ async function main() {
     issue_number: process.env.GITHUB_ISSUE_NUMBER
   });
 
-  core.info(issue);
-  core.info("hello");
+  console.log(issue);
+  console.log("hello3");
   
   const label = ['label1', 'label2', 'label3'] ;
 
   //Add the label to the issue
-  // await octokit.issue.update({
-  //   owner: process.env.GITHUB_REPOSITORY_OWNER,
-  //   repo: process.env.GITHUB_REPOSITORY_NAME,
-  //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
-  //   labels: label,
-  // });
 
     // await octokit.issues.addLabels({
     //   owner: 'gshivi',
@@ -43,7 +38,7 @@ const response = await octokit.request(
       labels: label,
       }
     );
-    core.info("Label added to the issue:", response.data);
+    console.log("Label added to the issue:", response.data);
   
 //   const xyz = await octokit.request('PATCH /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels', {
 //     owner: 'process.env.GITHUB_REPOSITORY_OWNER',
@@ -58,7 +53,7 @@ const response = await octokit.request(
 //   console.log(xyz);
   
   main().catch((error) => {
-    core.error('Error:', error);
+    console.error('Error:', error);
     process.exit(1);
   });
 }
