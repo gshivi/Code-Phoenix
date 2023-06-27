@@ -68,6 +68,16 @@ async function main() {
       labels: [gptResponse],
     });
 
+    const categoryRecord = categoryMap.get(gptResponse.toLowerCase());
+
+    // Assign the issue to the owner
+    octokit.issues.addAssignees({
+      owner: process.env.GITHUB_REPOSITORY_OWNER,
+      repo: process.env.GITHUB_REPOSITORY_NAME,
+      issue_number: process.env.GITHUB_ISSUE_NUMBER,
+      assignees: [categoryRecord.owner],
+    });
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
