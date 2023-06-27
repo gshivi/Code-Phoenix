@@ -66,24 +66,24 @@ async function main() {
       labels: [gptResponse],
     });  
 
-    const client = new SMTPClient({
-      user: 'das.bidisha08@gmail.com',
-      password: '@Mphasis05',
-      host: 'smtp.your-email.com',
-      ssl: true,
-    });
+    // const client = new SMTPClient({
+    //   user: 'das.bidisha08@gmail.com',
+    //   password: '@Mphasis05',
+    //   host: 'smtp.your-email.com',
+    //   ssl: true,
+    // });
 
-    client.send(
-      {
-        text: 'i hope this works',
-        from: 'das.bidisha08@gmail.com',
-        to: 'biddas@microsoft.com',
-        subject: 'testing emailjs',
-      },
-      (err, message) => {
-        console.log(err || message);
-      }
-    );
+    // client.send(
+    //   {
+    //     text: 'i hope this works',
+    //     from: 'das.bidisha08@gmail.com',
+    //     to: 'biddas@microsoft.com',
+    //     subject: 'testing emailjs',
+    //   },
+    //   (err, message) => {
+    //     console.log(err || message);
+    //   }
+    // );
   })
   .catch((error) => {
     console.log(error);
