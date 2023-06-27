@@ -1,0 +1,19 @@
+{
+  "name": "code-phoenix-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "label-issues.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gshivi/Code-Phoenix.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gshivi/Code-Phoenix/issues"
+  },
+  "homepage": "https://github.com/gshivi/Code-Phoenix#readme"
+}
