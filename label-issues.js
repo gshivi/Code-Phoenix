@@ -14,7 +14,7 @@ async function main() {
 
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
-  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title.Issue title:${issueTitle}. Return a label in the JSON format {label: labelName} refer to the following examples to determine the response format.if the label is paportal return {label: paportal}.if the label is pcf return {label: pcf}.if the label is canvasApps return {label: canvasApps}`;
+  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title. Issue title:${issueTitle}. Return a label in the JSON format {label: labelName} refer to the following examples to determine the response format. If the label is paportal return {label: paportal}. If the label is pcf return {label: pcf}. If the label is canvasApps return {label: canvasApps}.`;
    console.log(prompt1);
   
 let data = JSON.stringify({
