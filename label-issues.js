@@ -26,14 +26,24 @@ async function main() {
   //   labels: label,
   // });
 
-    await octokit.issues.addLabels({
-      owner: 'gshivi',
-      repo: 'Code-Phoenix',
-      issue_number: process.env.GITHUB_ISSUE_NUMBER,
-      labels: ['label1'],
-    });
+    // await octokit.issues.addLabels({
+    //   owner: 'gshivi',
+    //   repo: 'Code-Phoenix',
+    //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
+    //   labels: ['label1'],
+    // });
   
-
+const response = await octokit.request(
+      "POST /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels",
+      {
+      owner: 'process.env.GITHUB_REPOSITORY_OWNER',
+      repo: 'process.env.GITHUB_REPOSITORY_NAME',
+      issue_number: 'process.env.GITHUB_ISSUE_NUMBER',
+      labels: label,
+      }
+    );
+    console.log("Label added to the issue:", response.data);
+  
 //   const xyz = await octokit.request('PATCH /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels', {
 //     owner: 'process.env.GITHUB_REPOSITORY_OWNER',
 //     repo: 'process.env.GITHUB_REPOSITORY_NAME',
