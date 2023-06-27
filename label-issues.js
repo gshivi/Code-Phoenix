@@ -24,8 +24,8 @@ async function main() {
   categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
 
   const categoryArray = [...categoryMap.keys()];
-
-  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title & issue description. Issue title:${issueTitle}. Issue description: ${issueBody}. Return a label from ${categoryArray}. Refer to the following examples to determine the response. If the issue's title or body has paportal, it should be labelled as paportal. If it has pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
+  console.log(categoryArray);
+  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title & issue description. Issue title:${issueTitle}. Issue description: ${issueBody}. Use this array ${categoryArray} to assign labels. Refer to the following examples to determine the response. If the issue's title or body has paportal, it should be labelled as paportal. If it has pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
   
   let data = JSON.stringify({
     "prompt": prompt1,
