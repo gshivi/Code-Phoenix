@@ -30,11 +30,11 @@ async function main() {
     // });
   
 const response = await octokit.request(
-      "POST /repos/${{process.env.GITHUB_REPOSITORY_OWNER}}/${{process.env.GITHUB_REPOSITORY_NAME}}/issues/${{process.env.GITHUB_ISSUE_NUMBER}}/labels",
+      `POST /repos/${process.env.GITHUB_REPOSITORY_OWNER}/${process.env.GITHUB_REPOSITORY_NAME}/issues/${process.env.GITHUB_ISSUE_NUMBER}/labels`,
       {
-      owner: 'process.env.GITHUB_REPOSITORY_OWNER',
-      repo: 'process.env.GITHUB_REPOSITORY_NAME',
-      issue_number: 'process.env.GITHUB_ISSUE_NUMBER',
+      owner: process.env.GITHUB_REPOSITORY_OWNER,
+      repo: process.env.GITHUB_REPOSITORY_NAME,
+      issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: label,
       }
     );
