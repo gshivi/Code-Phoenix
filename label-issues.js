@@ -67,7 +67,7 @@ async function main() {
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: [gptResponse],
     });
-
+    console.log(gptResponse.toLowerCase());
     const categoryRecord = categoryMap.get(gptResponse.toLowerCase());
     console.log(categoryRecord);
     // Assign the issue to the owner
