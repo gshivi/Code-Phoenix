@@ -83,7 +83,12 @@ async function main() {
       html: "Test message",
     };
 
-    await transporter.sendMail(mailOptions);
+     send();
+    
+   async function send() {
+    const result = await transporter.sendMail(mailOptions);
+    console.log(JSON.stringify(result, null, 4));
+  }
 
 
     // const client = new SMTPClient({
