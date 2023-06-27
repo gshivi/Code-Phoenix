@@ -51,7 +51,7 @@ async function main() {
   };
 
   axios.request(config)
-  .then((response) => {
+  .then(async (response) => {
     const gptResponse = response.data.choices[0].text;
     console.log(gptResponse);
     // const labelIndex = gptResponse.indexOf('label: ');
@@ -63,23 +63,25 @@ async function main() {
     // Add the label to the issue
     const categoryKey = gptResponse.toLowerCase();
     console.log(categoryKey);
-    const res = octokit.issues.addLabels({
+    const resLabel = await octokit.issues.addLabels({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: [categoryKey],
     });
+    console.log(resLabel);
     
     console.log(categoryMap);
     const categoryRecord = categoryMap.get(categoryKey??'unknown')??categoryMap.get('unknown');
     console.log(categoryRecord);
     // Assign the issue to the owner
-    octokit.issues.addAssignees({
+    const resAssignee = await octokit.issues.addAssignees({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       assignees: [categoryRecord.owner],
     });
+    console.log(resAssignee);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
