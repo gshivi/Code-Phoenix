@@ -5,7 +5,7 @@ const {SMTPClient}= 'emailjs';
 async function main() {
 
   const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
-console.log("Bidisha check");
+
   // Fetch the issue information
   const issue = await octokit.issues.get({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
@@ -14,7 +14,17 @@ console.log("Bidisha check");
   });
 
   const issueTitle = issue.data.title;
-  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title. Issue title:${issueTitle}. Return a label in the JSON format {label: labelName} refer to the following examples to determine the response format. If the label is paportal return {label: paportal}. If the label is pcf return {label: pcf}. If the label is canvasApps return {label: canvasApps}.`;
+  const issueBody = issue.data.body;
+  const categoryMap = new Map();
+  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta.599@gmail.com'});
+
+  const categoryArray = [...categoryMap.keys()];
+
+  const prompt1 = `You are a GitHub automation tool and your primary purpose is to generate labels based on the issue title & issue description. Issue title:${issueTitle}. Issue description: ${issueBody}. Return a label from ${categoryArray} in the JSON format {label: labelName} refer to the following examples to determine the response format. If the issue can't be classified, label it as unknown.`;
   
   let data = JSON.stringify({
     "prompt": prompt1,
@@ -41,18 +51,19 @@ console.log("Bidisha check");
   axios.request(config)
   .then((response) => {
     const gptResponse = response.data.choices[0].text;
-    const labelIndex = gptResponse.indexOf('label: ');
-    const labelValueStartIndex = labelIndex + 7;
-    const labelValueEndIndex = gptResponse.indexOf('}', labelValueStartIndex);
-    const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
-    console.log([labelValue])
     console.log(gptResponse);
+    // const labelIndex = gptResponse.indexOf('label: ');
+    // const labelValueStartIndex = labelIndex + 7;
+    // const labelValueEndIndex = gptResponse.indexOf('}', labelValueStartIndex);
+    // const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
+    // console.log([labelValue])
+    // console.log(gptResponse);
     // Add the label to the issue
     const res = octokit.issues.addLabels({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
-      labels: [labelValue],
+      labels: [gptResponse],
     });  
 
     const client = new SMTPClient({
