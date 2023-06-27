@@ -90,62 +90,64 @@ async function main() {
       port: 465,
     });
 
+    const mailBody = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>GitHub Issue Assigned</title>
+      <style>
+        /* GitHub Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+        
+        /* GitHub Styles */
+        body {
+          font-family: 'Roboto Mono', monospace;
+          font-size: 16px;
+          line-height: 1.6;
+          color: #333333;
+        }
+        h2 {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+        h3 {
+          color: #0366d6;
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 30px;
+          margin-bottom: 15px;
+        }
+        p {
+          margin-bottom: 10px;
+        }
+      </style>
+    </head>
+    <body>
+      <h2>GitHub Issue Assigned</h2>
+      <p>Dear [User],</p>
+      
+      <p>An issue has been assigned to you on GitHub:</p>
+      
+      <h3>[Issue Title]</h3>
+      <p>[Issue Description]</p>
+      
+      <p>Please take appropriate action and provide necessary updates as needed.</p>
+      
+      <p>Thank you!</p>
+      
+      <p>Sincerely,</p>
+      <p>Your Team</p>
+    </body>
+    </html>
+    `;
     const mailOptions = {
       from: "shivikagupta.995@gmail.com",
       to: categoryRecord.contact,
       subject: `Assignment Notification: [${issue.data.title}] assigned to your ownership`,
-      html: `
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GitHub Issue Assigned</title>
-        <style>
-          /* GitHub Fonts */
-          @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-          
-          /* GitHub Styles */
-          body {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333333;
-          }
-          h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-          }
-          h3 {
-            color: #0366d6;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 30px;
-            margin-bottom: 15px;
-          }
-          p {
-            margin-bottom: 10px;
-          }
-        </style>
-      </head>
-      <body>
-        <h2>GitHub Issue Assigned</h2>
-        <p>Dear [User],</p>
-        
-        <p>An issue has been assigned to you on GitHub:</p>
-        
-        <h3>[Issue Title]</h3>
-        <p>[Issue Description]</p>
-        
-        <p>Please take appropriate action and provide necessary updates as needed.</p>
-        
-        <p>Thank you!</p>
-        
-        <p>Sincerely,</p>
-        <p>Your Team</p>
-      </body>
-      </html>
-      `,
+      html: mailBody,
     };
 
     send();
