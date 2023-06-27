@@ -83,7 +83,7 @@ async function main() {
       html: "Test message",
     };
 
-     send();
+    send();
     
    async function send() {
     const result = await transporter.sendMail(mailOptions);
