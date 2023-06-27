@@ -9,7 +9,7 @@ async function main() {
   const issue = await octokit.issues.get({
     owner: 'gshivi',
     repo: 'Code-Phoenix',
-    issue_number: process.env.GITHUB_ISSUE_NUMBER
+    issue_number: 5 //process.env.GITHUB_ISSUE_NUMBER
   });
   
   const label = ['label1', 'label2', 'label3'] ;
@@ -18,7 +18,7 @@ async function main() {
   await octokit.issues.addLabels({
     owner: 'gshivi',
     repo: 'Code-Phoenix',
-    issue_number: process.env.GITHUB_ISSUE_NUMBER,
+    issue_number: 5,//process.env.GITHUB_ISSUE_NUMBER,
     labels: label,
   });
 }
