@@ -1,6 +1,7 @@
 const { Octokit } = require('@octokit/rest');
 const axios = require('axios');
 const {SMTPClient}= 'emailjs';
+const nodemailer = require("nodemailer");
 
 async function main() {
 
@@ -64,7 +65,26 @@ async function main() {
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: [gptResponse],
-    });  
+    });
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: shivikagupta.995@gmail.com,
+        pass: gpdpydxdgfeeyyty,
+      },
+      port: 465,
+    });
+
+    const mailOptions = {
+      from: "shivikagupta.995@gmail.com",
+      to: "shivikagupta@microsoft.com",
+      subject: "Test Subject",
+      html: "Test message",
+    };
+
+    await transporter.sendMail(mailOptions);
+
 
     // const client = new SMTPClient({
     //   user: 'das.bidisha08@gmail.com',
