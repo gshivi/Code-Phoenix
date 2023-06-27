@@ -29,6 +29,7 @@ jobs:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           GITHUB_ISSUE_NUMBER: '${{github.event.issue.number }}'
           GITHUB_REPOSITORY_NAME: '${{github.event.repository.name }}'
+          PAT_TOKEN: '${{ secrets.PAT_TOKEN1 }}'
         run: |
           npm install @octokit/rest
           npm install @actions/core
