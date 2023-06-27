@@ -63,13 +63,14 @@ async function main() {
   //const label = ['label1', 'label2', 'label3'] ;
   console.log("Label");
   console.log(label);
+  console.log([label])
   //Add the label to the issue
-    const response = await octokit.issues.addLabels({
-    owner: process.env.GITHUB_REPOSITORY_OWNER,
-    repo: process.env.GITHUB_REPOSITORY_NAME,
-    issue_number: process.env.GITHUB_ISSUE_NUMBER,
-    labels: [label],
-  });  
+  //   const response = await octokit.issues.addLabels({
+  //   owner: process.env.GITHUB_REPOSITORY_OWNER,
+  //   repo: process.env.GITHUB_REPOSITORY_NAME,
+  //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
+  //   labels: [label],
+  // });  
 }
 
 main().catch((error) => {
