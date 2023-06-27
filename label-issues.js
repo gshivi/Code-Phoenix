@@ -5,6 +5,8 @@ async function main() {
   console.log(process.env.GITHUB_TOKEN);
   console.log(process.env.GITHUB_ISSUE_NUMBER);
   console.log("hello");
+  console.log(process.env);
+   console.log("hello");
   // Fetch the issue information
   const issue = await octokit.issues.get({
     owner: 'gshivi',
