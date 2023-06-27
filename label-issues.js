@@ -9,7 +9,8 @@ async function main() {
     repo: 'Code-Phoenix',
     issue_number: process.env.GITHUB_ISSUE_NUMBER
   });
-
+  console.log(process.env.GITHUB_TOKEN);
+  console.log(process.env.GITHUB_ISSUE_NUMBER);
   const label = ['label1', 'label2', 'label3'] ;
 
   // Add the label to the issue
