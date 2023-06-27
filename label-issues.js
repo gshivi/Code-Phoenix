@@ -51,9 +51,10 @@ const response = await octokit.request(
 //   })
 //   console.log("xyz starts");
 //   console.log(xyz);
-  
-  main().catch((error) => {
-    console.error('Error:', error);
-    process.exit(1);
-  });
 }
+
+main().catch((error) => {
+  console.error('Error:', error);
+  process.exit(1);
+});
+
