@@ -32,7 +32,7 @@ async function main() {
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: ['label1'],
     });
-  }
+  
 
 //   const xyz = await octokit.request('PATCH /repos/{process.env.GITHUB_REPOSITORY_OWNER}/{process.env.GITHUB_REPOSITORY_NAME}/issues/{process.env.GITHUB_ISSUE_NUMBER}/labels', {
 //     owner: 'process.env.GITHUB_REPOSITORY_OWNER',
