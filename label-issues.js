@@ -61,14 +61,15 @@ async function main() {
     // console.log([labelValue])
     // console.log(gptResponse);
     // Add the label to the issue
+    const categoryKey = gptResponse.toLowerCase();
+    console.log(categoryKey);
     const res = octokit.issues.addLabels({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
-      labels: [gptResponse],
+      labels: [categoryKey],
     });
-    console.log(gptResponse.toLowerCase());
-    const categoryKey = gptResponse.toLowerCase();
+    
     console.log(categoryMap);
     const categoryRecord = categoryMap.get(categoryKey??'unknown')??categoryMap.get('unknown');
     console.log(categoryRecord);
