@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gshivi/Code-Phoenix/issues"
   },
-  "homepage": "https://github.com/gshivi/Code-Phoenix#readme"
+  "homepage": "https://github.com/gshivi/Code-Phoenix#readme",
+  "dependencies": {
+    "emailjs": "4.0.2"
+  }
 }
