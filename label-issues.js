@@ -64,11 +64,13 @@ async function main() {
     const categoryKey = gptResponse.toLowerCase();
     console.log(categoryKey);
     console.log([categoryKey]);
+    const label = categoryKey.trim().replace(/\n/g, '');
+    console.log([label]);
     const resLabel = await octokit.issues.addLabels({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
-      labels: [categoryKey],
+      labels: [label],
     });
     console.log(resLabel);
     
