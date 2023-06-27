@@ -69,7 +69,7 @@ async function main() {
     });
 
     const categoryRecord = categoryMap.get(gptResponse.toLowerCase());
-
+    console.log(categoryRecord);
     // Assign the issue to the owner
     octokit.issues.addAssignees({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
