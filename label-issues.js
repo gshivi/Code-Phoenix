@@ -42,11 +42,11 @@ async function main() {
   .then((response) => {
     console.log(JSON.stringify(response.data));
 
-    const jsonObject = JSON.parse(response.data);
+    //const jsonObject = JSON.parse(response.data);
     console.log("Choices");
-    console.log(jsonObject.choices[0]);
+    console.log(response.data.choices[0]);
     console.log("Choices text");
-    console.log(jsonObject.choices[0].text);
+    console.log(response.data.choices[0].text);
     // jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
     // const updatedJsonString = JSON.stringify(jsonObject);
 
