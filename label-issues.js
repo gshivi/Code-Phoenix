@@ -42,6 +42,17 @@ let config = {
 axios.request(config)
 .then((response) => {
   console.log(JSON.stringify(response.data));
+
+const jsonObject = JSON.parse(response.data);
+console.log(jsonObject);
+// jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
+// const updatedJsonString = JSON.stringify(jsonObject);
+
+// const labelIndex = string.indexOf('label: ');
+// const labelValueStartIndex = labelIndex + 7;
+// const labelValueEndIndex = string.indexOf('}', labelValueStartIndex);
+// const labelValue = string.substring(labelValueStartIndex, labelValueEndIndex).trim();
+
 })
 .catch((error) => {
   console.log(error);
