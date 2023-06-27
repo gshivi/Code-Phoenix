@@ -1,6 +1,6 @@
 const { Octokit } = require('@octokit/rest');
 const axios = require('axios');
-const SMTPClient= 'emailjs';
+const {SMTPClient}= 'emailjs';
 
 async function main() {
 
