@@ -48,7 +48,7 @@ async function main() {
     const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
 
     // Add the label to the issue
-    const response = octokit.issues.addLabels({
+    const res = octokit.issues.addLabels({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
     repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
