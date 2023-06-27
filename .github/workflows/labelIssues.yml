@@ -27,4 +27,4 @@ jobs:
         run: |
           npm install @octokit/rest
           node label-issues.js
-
+        shell: bash
