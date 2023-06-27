@@ -26,5 +26,6 @@ jobs:
           GITHUB_REPOSITORY_NAME: '${{github.event.repository.name }}'
         run: |
           npm install @octokit/rest
+          npm install @actions/core
           node label-issues.js
 
