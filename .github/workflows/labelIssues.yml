@@ -17,11 +17,17 @@ jobs:
       - name: Dump github context
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
+      - name: Check github issue num
+        env:
+          GITHUB_ISSUE_NUMBER: '${{github.event.issue.number }}'
+        run: echo ${{github.event.issue.number }}
+        shell: bash
       - name: Install dependencies
         run: npm install
       - name: Label Issues
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_ISSUE_NUMBER: '${{github.event.issue.number }}'
         run: |
           npm install @octokit/rest
           node label-issues.js
