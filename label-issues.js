@@ -4,7 +4,7 @@ const axios = require('axios');
 async function main() {
 
   const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
-
+console.log("Bidisha check");
   // Fetch the issue information
   const issue = await octokit.issues.get({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
