@@ -68,7 +68,9 @@ async function main() {
       labels: [gptResponse],
     });
     console.log(gptResponse.toLowerCase());
-    const categoryRecord = categoryMap.get(gptResponse.toLowerCase());
+    const categoryKey = gptResponse.toLowerCase();
+    console.log(categoryMap);
+    const categoryRecord = categoryMap.get(categoryKey??'unknown')??categoryMap.get('unknown');
     console.log(categoryRecord);
     // Assign the issue to the owner
     octokit.issues.addAssignees({
