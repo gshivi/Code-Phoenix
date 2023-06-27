@@ -1,5 +1,4 @@
 const { Octokit } = require('@octokit/rest');
-const { create } = require('@openai/api');
 
 async function main() {
   const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
