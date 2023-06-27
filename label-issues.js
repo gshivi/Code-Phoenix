@@ -70,8 +70,8 @@ async function main() {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: shivikagupta.995@gmail.com,
-        pass: gpdpydxdgfeeyyty,
+        user: "shivikagupta.995@gmail.com",
+        pass: "gpdpydxdgfeeyyty",
       },
       port: 465,
     });
