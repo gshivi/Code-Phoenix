@@ -48,6 +48,10 @@ async function main() {
     console.log("Choices text");
     console.log(response.data.choices[0].text);
     label = response.data.choices[0].text.label;
+
+    console.log("Label");
+    console.log(label);
+    console.log([label])
     // jsonObject.choices[0].text = '\n\n{label: NewLabelValue}'; // Assign the new value to the "label" property
     // const updatedJsonString = JSON.stringify(jsonObject);
 
@@ -61,9 +65,7 @@ async function main() {
   });
   
   //const label = ['label1', 'label2', 'label3'] ;
-  console.log("Label");
-  console.log(label);
-  console.log([label])
+
   //Add the label to the issue
   //   const response = await octokit.issues.addLabels({
   //   owner: process.env.GITHUB_REPOSITORY_OWNER,
