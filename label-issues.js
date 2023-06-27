@@ -44,7 +44,7 @@ async function main() {
     const gptResponse = response.data.choices[0].text;
     const labelIndex = gptResponse.indexOf('label: ');
     const labelValueStartIndex = labelIndex + 7;
-    const labelValueEndIndex = string.indexOf('}', labelValueStartIndex);
+    const labelValueEndIndex = gptResponse.indexOf('}', labelValueStartIndex);
     const labelValue = gptResponse.substring(labelValueStartIndex, labelValueEndIndex).trim();
     console.log(labelValue);
     console.log([labelValue])
