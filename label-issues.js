@@ -44,39 +44,16 @@ axios.request(config)
 .catch((error) => {
   console.log(error);
 });
-
-  // const client = axios.create({
-  //   headers:{
-  //     authorization: "Bearer " + key,
-  //   },
-  // });
-
-  // const params = {
-  //   "prompt": "essay on delhi\n",
-  //   "temperature": 1,
-  //   "top_p": 0.5,
-  //   "frequency_penalty": 0,
-  //   "presence_penalty": 0,
-  //   "max_tokens": 100,
-  //   "best_of": 1,
-  //   "stop": null
-  // };
-
-  // client.post("https://nikhilhackathonjune.openai.azure.com/openai/deployments/NikhilDavinci003/completions?api-version=2022-12-01", params)
-  //   .then((response)=>{console.log(response)})
-  //   .catch((err)=>{console.error(err)});
-
   
-  const label = ['label1', 'label2', 'label3'] ;
+const label = ['label1', 'label2', 'label3'] ;
 
-  //Add the label to the issue
-   const response = await octokit.issues.addLabels({
+//Add the label to the issue
+      const response = await octokit.issues.addLabels({
       owner: 'gshivi',
       repo: 'Code-Phoenix',
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: label,
-    });
-  
+    });  
 }
 
 main().catch((error) => {
