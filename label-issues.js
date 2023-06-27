@@ -14,7 +14,7 @@ async function main() {
   });
 
   console.log(issue);
-  console.log("hello" issue);
+  console.log("hello");
   
   const label = ['label1', 'label2', 'label3'] ;
 
