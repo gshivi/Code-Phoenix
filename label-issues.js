@@ -85,7 +85,7 @@ async function main() {
       service: "gmail",
       auth: {
         user: "shivikagupta.995@gmail.com",
-        pass: "gpdpydxdgfeeyyty",
+        pass: process.env.MAIL_APP_PASSWORD,
       },
       port: 465,
     });
