@@ -1,6 +1,5 @@
 const { Octokit } = require('@octokit/rest');
 const axios = require('axios');
-const {SMTPClient}= 'emailjs';
 const nodemailer = require("nodemailer");
 
 async function main() {
@@ -17,11 +16,11 @@ async function main() {
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = new Map();
-  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('paportal', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
+  categoryMap.set('pcf', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
+  categoryMap.set('solution', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
+  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
+  categoryMap.set('unknown', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
 
   const categoryArray = [...categoryMap.keys()];
   
