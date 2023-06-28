@@ -14,14 +14,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Dump github context
-        run: echo '${{ toJSON(github.event) }}' | jq
-        shell: bash
-      - name: Check xyz variable
-        env:
-          PAT_TOKEN: '${{ secrets.PAT_TOKEN1 }}'
-        run: echo '${{ secrets.PAT_TOKEN1 }}'
-        shell: bash
       - name: Install dependencies
         run: npm install
       - name: Label Issues

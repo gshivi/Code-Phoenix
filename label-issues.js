@@ -24,12 +24,11 @@ async function main() {
   categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
 
   const categoryArray = [...categoryMap.keys()];
-  console.log(categoryArray);
-  const prompt1 = `You are a classification tool and your primary purpose is to classify based on the issue title & issue description. Output must be one word only. Output must be one of the entries in this array: ${categoryArray}. Issue title: ${issueTitle}.  Issue description: ${issueBody}. Refer to the following examples to determine the response. If the issue's title or body contains paportal, it should be labelled as paportal. If it contains pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
   
+  const prompt = `You are a classification tool and your primary purpose is to classify based on the issue title & issue description. Output must be one word only. Output must be one of the entries in this array: ${categoryArray}. Issue title: ${issueTitle}.  Issue description: ${issueBody}. Refer to the following examples to determine the response. If the issue's title or body contains paportal, it should be labelled as paportal. If it contains pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
   
   let data = JSON.stringify({
-    "prompt": prompt1,
+    "prompt": prompt,
     "temperature": 0,
     "top_p": 1,
     "frequency_penalty": 0,
@@ -53,33 +52,27 @@ async function main() {
   axios.request(config)
   .then(async (response) => {
     const gptResponse = response.data.choices[0].text;
-    console.log(gptResponse);
    
     // Add the label to the issue
     const categoryKey = gptResponse.toLowerCase();
-    console.log(categoryKey);
-    console.log([categoryKey]);
     const label = categoryKey.trim().replace(/\n/g, '');
-    console.log([label]);
-    const resLabel =  octokit.issues.addLabels({
+    
+    octokit.issues.addLabels({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       labels: [label],
     });
-    console.log(resLabel);
     
-    console.log(categoryMap);
     const categoryRecord = categoryMap.get(categoryKey??'unknown')??categoryMap.get('unknown');
-    console.log(categoryRecord);
+
     // Assign the issue to the owner
-    const resAssignee =  octokit.issues.addAssignees({
+    octokit.issues.addAssignees({
       owner: process.env.GITHUB_REPOSITORY_OWNER,
       repo: process.env.GITHUB_REPOSITORY_NAME,
       issue_number: process.env.GITHUB_ISSUE_NUMBER,
       assignees: [categoryRecord.owner],
     });
-    console.log(resAssignee);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -156,7 +149,6 @@ async function main() {
     const result = await transporter.sendMail(mailOptions);
     console.log(JSON.stringify(result, null, 4));
   }
-
 
     // const client = new SMTPClient({
     //   user: 'das.bidisha08@gmail.com',
