@@ -31,6 +31,7 @@ jobs:
           GITHUB_REPOSITORY_NAME: '${{github.event.repository.name }}'
           PAT_TOKEN: '${{ secrets.PAT_TOKEN1 }}'
           API_KEY: '${{ secrets.OPENAI_API_KEY }}'
+          MAIL_APP_PASSWORD: '${{ secrets.MAIL_APP_PASSWORD }}'
         run: |
           npm install @octokit/rest
           npm install axios
