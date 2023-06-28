@@ -16,7 +16,7 @@ async function main() {
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = new Map();
-  categoryMap.set('paportal', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
+  categoryMap.set('paportal', {owner: 'gshivi', contact: 'das.bidisha08@gmail.com'});
   categoryMap.set('pcf', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
   categoryMap.set('solution', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
   categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'biddas@microsoft.com'});
