@@ -4,6 +4,8 @@ name: Label issues
     types:
       - reopened
       - opened
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
 jobs:
   label-issues:
     runs-on: ubuntu-latest
@@ -30,4 +32,10 @@ jobs:
           npm install emailjs
           npm install nodemailer
           node label-issues.js
-
+  stale-issues:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - name: Echo debug
+        run: |
+          echo "Hello world!"
