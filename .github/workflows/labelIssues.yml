@@ -35,6 +35,15 @@ jobs:
   stale-issues:
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
+    uses: actions/stale@v8
+    with:
+          repo-token: ${{ secrets.PAT_TOKEN1 }}
+          stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
+          close-issue-message: 'This issue was closed because it has been stalled for 1 day with no activity.'
+          days-before-issue-stale: 2
+          days-before-issue-close: 1
+          stale-issue-label: stale
+          stale-message: 'This issue is considered stale.'
     steps:
       - name: Echo debug
         run: |
