@@ -9,6 +9,7 @@ name: Label issues
 jobs:
   label-issues:
     runs-on: ubuntu-latest
+    if: github.event_name == 'issues'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
