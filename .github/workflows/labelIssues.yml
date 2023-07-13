@@ -5,7 +5,7 @@ name: Label issues
       - reopened
       - opened
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
+    - cron: '*/5 * * * *' # Runs every day at midnight UTC
 jobs:
   label-issues:
     runs-on: ubuntu-latest
