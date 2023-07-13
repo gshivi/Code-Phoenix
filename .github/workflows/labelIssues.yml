@@ -33,9 +33,8 @@ jobs:
           npm install nodemailer
           node label-issues.js
   stale-issues:
-    runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
-    uses: actions/stale@v8
+    uses: actions/stale@v4
     with:
           repo-token: ${{ secrets.PAT_TOKEN1 }}
           stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
@@ -44,7 +43,3 @@ jobs:
           days-before-issue-close: 1
           stale-issue-label: 'stale'
           stale-message: 'This issue is considered stale.'
-    steps:
-      - name: Echo debug
-        run: |
-          echo "Hello world!"
