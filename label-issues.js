@@ -70,6 +70,7 @@ async function main() {
         categoryMap.get(categoryKey ?? "unknown") ?? categoryMap.get("unknown");
 
       // Assign the issue to the owner
+      console.log('category record here...',categoryRecord);
       octokit.issues.addAssignees({
         owner: process.env.GITHUB_REPOSITORY_OWNER,
         repo: process.env.GITHUB_REPOSITORY_NAME,
