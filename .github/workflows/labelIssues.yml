@@ -45,4 +45,3 @@ jobs:
             days-before-issue-stale: 2
             days-before-issue-close: 1
             stale-issue-label: 'stale'
-            stale-message: 'This issue is considered stale.'
