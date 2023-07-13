@@ -19,11 +19,11 @@ async function main() {
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = new Map();
-  categoryMap.set('paportal', {owner: 'biddas', contact: 'biddas@microsoft.com'});
-  categoryMap.set('pcf', {owner: 'biddas', contact: 'biddas@microsoft.com'});
-  categoryMap.set('solution', {owner: 'biddas', contact: 'biddas@microsoft.com'});
-  categoryMap.set('canvas-app', {owner: 'biddas', contact: 'biddas@microsoft.com'});
-  categoryMap.set('unknown', {owner: 'biddas', contact: 'biddas@microsoft.com'});
+  categoryMap.set('paportal', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('pcf', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('solution', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('canvas-app', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('unknown', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
 
   const categoryArray = [...categoryMap.keys()];
   
