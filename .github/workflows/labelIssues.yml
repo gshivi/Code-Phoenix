@@ -34,6 +34,7 @@ jobs:
           node label-issues.js
   stale-issues:
     runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
     steps:
       - name: Use stale action
         uses: actions/stale@v8
