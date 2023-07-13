@@ -4,7 +4,8 @@ const nodemailer = require("nodemailer");
 
 async function main() {
   const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
-
+  console.log(process.env.GITHUB_REPOSITORY_OWNER, process.env.GITHUB_REPOSITORY_NAME, process.env.GITHUB_ISSUE_NUMBER, 'hello');
+  
   // Fetch the issue information
   const issue = await octokit.issues.get({
     owner: process.env.GITHUB_REPOSITORY_OWNER,
@@ -12,26 +13,16 @@ async function main() {
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
   });
 
+  console.log('Issue here...', issue);
+
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = new Map();
-  categoryMap.set("paportal", {
-    owner: "biddas",
-    contact: "biddas@microsoft.com",
-  });
-  categoryMap.set("pcf", { owner: "biddas", contact: "biddas@microsoft.com" });
-  categoryMap.set("solution", {
-    owner: "biddas",
-    contact: "biddas@microsoft.com",
-  });
-  categoryMap.set("canvas-app", {
-    owner: "biddas",
-    contact: "biddas@microsoft.com",
-  });
-  categoryMap.set("unknown", {
-    owner: "biddas",
-    contact: "biddas@microsoft.com",
-  });
+  categoryMap.set('paportal', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('pcf', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('solution', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('canvas-app', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('unknown', {owner: 'shivikagupta', contact: 'shivikagupta@microsoft.com'});
 
   const categoryArray = [...categoryMap.keys()];
 
@@ -74,7 +65,7 @@ async function main() {
         issue_number: process.env.GITHUB_ISSUE_NUMBER,
         labels: [label],
       });
-
+      console.log('Labels added...');
       const categoryRecord =
         categoryMap.get(categoryKey ?? "unknown") ?? categoryMap.get("unknown");
 
@@ -85,7 +76,7 @@ async function main() {
         issue_number: process.env.GITHUB_ISSUE_NUMBER,
         assignees: [categoryRecord.owner],
       });
-
+      console.log('Issue assigned...');
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -170,6 +161,6 @@ async function main() {
 
 main().catch((error) => {
   console.error("Error:", error);
-  console.log('Error in mail');
+  console.log('Error in main');
   process.exit(1);
 });

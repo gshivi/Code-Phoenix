@@ -9,13 +9,14 @@ name: Label issues
 jobs:
   label-issues:
     runs-on: ubuntu-latest
+    if: github.event_name == 'issues'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
       - name: Install dependencies
         run: npm install
       - name: Label Issues
