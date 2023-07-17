@@ -9,6 +9,7 @@ const getCataegoryMap = () =>{
   categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
   categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
   categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  return categoryMap;
 }
 
 async function main() {
