@@ -2,6 +2,15 @@ const { Octokit } = require("@octokit/rest");
 const axios = require("axios");
 const nodemailer = require("nodemailer");
 
+const getCataegoryMap = () =>{
+  const categoryMap = new Map();
+  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
+}
+
 async function main() {
   const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
   
@@ -14,13 +23,7 @@ async function main() {
 
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
-  const categoryMap = new Map();
-  categoryMap.set('paportal', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('pcf', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('solution', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('canvas-app', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-  categoryMap.set('unknown', {owner: 'gshivi', contact: 'shivikagupta@microsoft.com'});
-
+  const categoryMap = getCataegoryMap();
   const categoryArray = [...categoryMap.keys()];
 
   const prompt = `You are a classification tool and your primary purpose is to classify based on the issue title & issue description. Output must be one word only. Output must be one of the entries in this array: ${categoryArray}. Issue title: ${issueTitle}.  Issue description: ${issueBody}. Refer to the following examples to determine the response. If the issue's title or body contains paportal, it should be labelled as paportal. If it contains pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
@@ -74,6 +77,7 @@ async function main() {
         assignees: [categoryRecord.owner],
       });
 
+      // Code-flow for sending mail( TO-Do: Move to a separate function)
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -153,6 +157,9 @@ async function main() {
     .catch((error) => {
       console.log(error);
     });
+
+    //Stale piece here
+
 }
 
 main().catch((error) => {
