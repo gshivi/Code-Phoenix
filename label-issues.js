@@ -77,7 +77,7 @@ async function main() {
         assignees: [categoryRecord.owner],
       });
 
-      // Code-flow for sending mail( TO-Do: Move to a separate function)
+      // Code-flow for sending mail
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -157,9 +157,6 @@ async function main() {
     .catch((error) => {
       console.log(error);
     });
-
-    //Stale piece here
-
 }
 
 main().catch((error) => {
