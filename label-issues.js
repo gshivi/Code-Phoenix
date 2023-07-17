@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 
 async function main() {
   const octokit = new Octokit({ auth: process.env.PAT_TOKEN });
-  console.log(process.env.GITHUB_REPOSITORY_OWNER, process.env.GITHUB_REPOSITORY_NAME, process.env.GITHUB_ISSUE_NUMBER, 'hello');
   
   // Fetch the issue information
   const issue = await octokit.issues.get({
@@ -12,8 +11,6 @@ async function main() {
     repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
   });
-
-  console.log('Issue here...', issue);
 
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
@@ -65,19 +62,18 @@ async function main() {
         issue_number: process.env.GITHUB_ISSUE_NUMBER,
         labels: [label],
       });
-      console.log('Labels added...');
+
       const categoryRecord =
         categoryMap.get(categoryKey ?? "unknown") ?? categoryMap.get("unknown");
 
       // Assign the issue to the owner
-      console.log('category record here...',categoryRecord);
       octokit.issues.addAssignees({
         owner: process.env.GITHUB_REPOSITORY_OWNER,
         repo: process.env.GITHUB_REPOSITORY_NAME,
         issue_number: process.env.GITHUB_ISSUE_NUMBER,
         assignees: [categoryRecord.owner],
       });
-      console.log('Issue assigned...');
+
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -156,12 +152,10 @@ async function main() {
     })
     .catch((error) => {
       console.log(error);
-      console.log('error in axios');
     });
 }
 
 main().catch((error) => {
   console.error("Error:", error);
-  console.log('Error in main');
   process.exit(1);
 });
