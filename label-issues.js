@@ -21,7 +21,7 @@ async function main() {
     repo: process.env.GITHUB_REPOSITORY_NAME,
     issue_number: process.env.GITHUB_ISSUE_NUMBER,
   });
-
+console.log(issue);
   const issueTitle = issue.data.title;
   const issueBody = issue.data.body;
   const categoryMap = getCataegoryMap();
