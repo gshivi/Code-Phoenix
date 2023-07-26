@@ -26,7 +26,6 @@ console.log(issue);
   const issueBody = issue.data.body;
   const categoryMap = getCataegoryMap();
   const categoryArray = [...categoryMap.keys()];
-
   const prompt = `You are a classification tool and your primary purpose is to classify based on the issue title & issue description. Output must be one word only. Output must be one of the entries in this array: ${categoryArray}. Issue title: ${issueTitle}.  Issue description: ${issueBody}. Refer to the following examples to determine the response. If the issue's title or body contains paportal, it should be labelled as paportal. If it contains pcf, label issue as pcf. If the issue can't be classified, label it as unknown.`;
 
   let data = JSON.stringify({
