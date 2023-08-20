@@ -60,23 +60,23 @@ console.log(issue);
       const categoryKey = gptResponse.toLowerCase();
       const label = categoryKey.trim().replace(/\n/g, "");
 
-      octokit.issues.addLabels({
-        owner: process.env.GITHUB_REPOSITORY_OWNER,
-        repo: process.env.GITHUB_REPOSITORY_NAME,
-        issue_number: process.env.GITHUB_ISSUE_NUMBER,
-        labels: [label],
-      });
+      // octokit.issues.addLabels({
+      //   owner: process.env.GITHUB_REPOSITORY_OWNER,
+      //   repo: process.env.GITHUB_REPOSITORY_NAME,
+      //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
+      //   labels: [label],
+      // });
 
       const categoryRecord =
         categoryMap.get(categoryKey ?? "unknown") ?? categoryMap.get("unknown");
 
       // Assign the issue to the owner
-      octokit.issues.addAssignees({
-        owner: process.env.GITHUB_REPOSITORY_OWNER,
-        repo: process.env.GITHUB_REPOSITORY_NAME,
-        issue_number: process.env.GITHUB_ISSUE_NUMBER,
-        assignees: [categoryRecord.owner],
-      });
+      // octokit.issues.addAssignees({
+      //   owner: process.env.GITHUB_REPOSITORY_OWNER,
+      //   repo: process.env.GITHUB_REPOSITORY_NAME,
+      //   issue_number: process.env.GITHUB_ISSUE_NUMBER,
+      //   assignees: [categoryRecord.owner],
+      // });
 
       // Code-flow for sending mail
       const transporter = nodemailer.createTransport({
@@ -148,7 +148,7 @@ console.log(issue);
         html: mailBody,
       };
 
-      send();
+      //send();
 
       async function send() {
         const result = await transporter.sendMail(mailOptions);
